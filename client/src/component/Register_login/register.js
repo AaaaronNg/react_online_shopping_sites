@@ -3,11 +3,14 @@ import FormField from "../utils/Form/formField";
 import { update, generateData, isFormValid } from "../utils/Form/formActions";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { registerUser } from "../../actions/user_actions";
+
+import { Modal } from "bootstrap";
 
 class Register extends Component {
   state = {
     formError: false,
-    formSuccess: "",
+    formSuccess: false,
     formdata: {
       email: {
         element: "input_register_email",
@@ -25,11 +28,11 @@ class Register extends Component {
         touched: false,
         validationMessage: "This field is required",
       },
-      firstName: {
-        element: "input_firstName",
+      name: {
+        element: "input_name",
         value: "",
         config: {
-          name: "firstName_input",
+          name: "name_input",
           type: "text",
           placeholder: "Enter your firstname",
         },
@@ -40,8 +43,8 @@ class Register extends Component {
         touched: false,
         validationMessage: "This field is required",
       },
-      lastName: {
-        element: "input_lastName",
+      lastname: {
+        element: "input_lastname",
         value: "",
         config: {
           name: "lastname_input",
@@ -88,7 +91,42 @@ class Register extends Component {
       },
     },
   };
-  submitForm = () => {};
+  submitForm = (event) => {
+    // this.props -> coming from routes.js
+
+    event.preventDefault();
+
+    let dataToSubmit = generateData(this.state.formdata, "register");
+    let formIsValid = isFormValid(this.state.formdata, "register");
+    console.log("formIsValid", formIsValid);
+    if (formIsValid) {
+      this.props
+        .dispatch(registerUser(dataToSubmit))
+        .then((response) => {
+          console.log(response.payload);
+          if (response.payload.success) {
+            console.log(response.payload.success);
+            let modal = new Modal(document.getElementById("exampleModal"));
+            modal.show();
+            this.setState({ forError: false, formSuccess: true });
+
+            setTimeout(() => {
+              modal.hide();
+              this.props.history.push("/login");
+            }, 3000);
+          } else {
+            this.setState({ forError: true });
+          }
+        })
+        .catch((e) => {
+          this.setState({ formError: true });
+        });
+    } else {
+      this.setState({
+        formError: true,
+      });
+    }
+  };
 
   updateForm = (element) => {
     const newFormdata = update(element, this.state.formdata, "register");
@@ -96,7 +134,6 @@ class Register extends Component {
       formError: false,
       formdata: newFormdata,
     });
-    console.log(this.state);
   };
 
   render() {
@@ -104,7 +141,7 @@ class Register extends Component {
       <div>
         <div class="container">
           <div class="row py-5 mt-4 align-items-center">
-            <div class="col-md-5 pr-lg-5 ">
+            <div class="col-md-5 pr-lg-5">
               <img
                 src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg"
                 alt=""
@@ -123,8 +160,8 @@ class Register extends Component {
               <form onSubmit={(event) => this.submitForm(event)}>
                 {/* First Name */}
                 <FormField
-                  id={"firstName"} // firstName
-                  formdata={this.state.formdata.firstName} // formdata
+                  id={"name"} // firstName
+                  formdata={this.state.formdata.name} // formdata
                   change={(element) => {
                     //  function to update the form
                     this.updateForm(element);
@@ -133,8 +170,8 @@ class Register extends Component {
 
                 {/* last name */}
                 <FormField
-                  id={"lastName"} // firstName
-                  formdata={this.state.formdata.lastName} // formdata
+                  id={"lastname"} // firstName
+                  formdata={this.state.formdata.lastname} // formdata
                   change={(element) => {
                     //  function to update the form
                     this.updateForm(element);
@@ -171,10 +208,14 @@ class Register extends Component {
                   }}
                 />
 
+                {this.state.formError ? (
+                  <p class="text-danger">check your data</p>
+                ) : null}
+
                 {/* submit button */}
                 <div class="form-group col-lg-12 mx-auto mb-0">
                   <a
-                    href="#"
+                    onClick={(event) => this.submitForm(event)}
                     class="btn btn-primary active btn-block col-12"
                     role="button"
                   >

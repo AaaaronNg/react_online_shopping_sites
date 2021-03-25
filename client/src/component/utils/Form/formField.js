@@ -5,7 +5,7 @@ const FormField = ({ formdata, change, id }) => {
     let formTemplate = null;
 
     switch (formdata.element) {
-      case "input_firstName":
+      case "input_name":
         formTemplate = (
           <div class="input-group col-lg-6 mb-4">
             <div class="input-group-prepend">
@@ -35,7 +35,7 @@ const FormField = ({ formdata, change, id }) => {
           </div>
         );
         break;
-      case "input_lastName":
+      case "input_lastname":
         formTemplate = (
           <div class="input-group col-lg-6 mb-4">
             <div class="input-group-prepend">
@@ -110,7 +110,7 @@ const FormField = ({ formdata, change, id }) => {
               class={
                 formdata.validation && !formdata.valid
                   ? "form-control bg-white border-left-0 border-md is-invalid"
-                  : "form-control bg-white border-left-0 border-md"
+                  : "form-control bg-white border-left-0 border-md "
               }
             />
             <div
@@ -139,8 +139,8 @@ const FormField = ({ formdata, change, id }) => {
               onChange={(event) => change({ event, id })} // update the form
               class={
                 formdata.validation && !formdata.valid
-                  ? "form-control bg-white border-left-0 border-md is-invalid"
-                  : "form-control bg-white border-left-0 border-md"
+                  ? "form-control bg-white border-left-0 border-md "
+                  : "form-control bg-white border-left-0 border-md "
               }
             />
             <div
@@ -198,7 +198,7 @@ const FormField = ({ formdata, change, id }) => {
               class={
                 formdata.validation && !formdata.valid
                   ? "form-control bg-white border-left-0 border-md is-invalid"
-                  : "form-control bg-white border-left-0 border-md"
+                  : "form-control bg-white border-left-0 border-md is-valid"
               }
             />
             <div
@@ -208,7 +208,7 @@ const FormField = ({ formdata, change, id }) => {
                   : "valid-feedback"
               }
             >
-              This field is required
+              {formdata.validationMessage}
             </div>
           </div>
         );

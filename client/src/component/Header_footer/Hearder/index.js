@@ -1,62 +1,80 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
 const Header = () => {
   return (
-    <header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white">About</h4>
-              <p class="text-muted">
-                Add some information about the album below, the author, or any
-                other background context. Make it a few sentences long so folks
-                can pick up some informative tidbits. Then, link them off to
-                some social networking sites or contact information.
-              </p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Contact</h4>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#" class="text-white">
-                    Follow on Twitter
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="text-white">
-                    Like on Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="text-white">
-                    Email me
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>Album</strong>
-          </a>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
           <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarHeader"
-            aria-controls="navbarHeader"
+            data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+          <a class="navbar-brand" href="#">
+            Navbar
+          </a>
+          <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+              {/* dropdown menu */}
+              <li class="nav-item dropdown pe-5">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDarkDropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDarkDropdownMenuLink"
+                >
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Action
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Another action
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Something else here
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              {/* acoustic */}
+              <li class="nav-item pe-5 ">
+                <a class="nav-link " href="#">
+                  Acoustic
+                </a>
+              </li>
+              <li class="nav-item pe-5">
+                <a class="nav-link" href="#">
+                  Bass
+                </a>
+              </li>
+              <li class="nav-item pe-5">
+                <a class="nav-link" href="#">
+                  Amps
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </header>
+      </nav>
+    </div>
   );
 };
 

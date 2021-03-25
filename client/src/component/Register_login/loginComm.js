@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 class LoginComm extends Component {
   state = {
     formError: false,
-    formSuccess: "",
+    formSuccess: false,
     formdata: {
       email: {
         element: "input_email",
@@ -50,7 +50,6 @@ class LoginComm extends Component {
       formError: false,
       formdata: newFormdata,
     });
-    console.log(this.state);
   };
 
   submitForm = (event) => {
@@ -74,6 +73,7 @@ class LoginComm extends Component {
       });
     }
   };
+
   render() {
     return (
       <div>
