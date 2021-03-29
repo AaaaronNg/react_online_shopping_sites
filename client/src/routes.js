@@ -5,7 +5,7 @@ import Auth from ".//hoc/auth";
 import Register from "./component/Register_login/register";
 import Login from "./component/Register_login/login";
 import DialogSuccess from "./component/Register_login/dialogSuccess";
-import UserDashboard from "./component/User";
+import UserDashboard from "./component/User/index";
 
 const Routes = () => {
   return (

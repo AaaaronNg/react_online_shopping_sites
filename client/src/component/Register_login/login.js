@@ -4,6 +4,7 @@ import "./login.css";
 import LoginField from "./loginComm";
 
 const Login = () => {
+  console.log("Login component");
   return (
     <div>
       <div

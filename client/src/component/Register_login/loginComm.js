@@ -59,9 +59,8 @@ class LoginComm extends Component {
     let formIsValid = isFormValid(this.state.formdata, "login");
     if (formIsValid) {
       this.props.dispatch(loginUser(dataToSubmit)).then((response) => {
+        console.log("response.type", response.payload);
         if (response.payload.loginSuccess) {
-          console.log(response.payload);
-          console.log(this.props);
           this.props.history.push("/user/dashboard");
         } else {
           this.setState({ formError: true });
@@ -75,6 +74,7 @@ class LoginComm extends Component {
   };
 
   render() {
+    console.log("loginComm render");
     return (
       <div>
         <form

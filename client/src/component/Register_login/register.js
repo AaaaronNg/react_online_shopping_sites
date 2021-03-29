@@ -137,6 +137,7 @@ class Register extends Component {
   };
 
   render() {
+    console.log("register render");
     return (
       <div>
         <div class="container">

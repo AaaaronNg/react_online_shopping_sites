@@ -1,8 +1,12 @@
-import React from "react";
 import UserLayout from "../../hoc/user";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import CircularProgress from "../../hoc/CircularProgress";
 
-const UserDashboard = () => {
+import { connect } from "react-redux";
+
+import React, { Component } from "react";
+
+const UserDashboard = ({ user }) => {
   return (
     <div>
       <UserLayout>
@@ -11,10 +15,11 @@ const UserDashboard = () => {
             <div class="container-fluid py-3 ">
               <h1 class="fw-bold">User information</h1>
               <p class="col-md-8 fs-4 text-secondary">
-                Using a series of utilities, you can create this jumbotron, just
-                like the one in previous versions of Bootstrap. Check out the
-                examples below for how you can remix and restyle it to your
-                liking.
+                {user.userData.name}
+                <br />
+                {user.userData.lastname}
+                <br />
+                {user.userData.email}
               </p>
               <Link to="/user/user_profile">
                 <button class="btn btn-primary btn-lg" type="button">

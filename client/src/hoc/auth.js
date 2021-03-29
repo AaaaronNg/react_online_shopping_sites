@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { auth } from "../actions/user_actions";
@@ -6,13 +7,15 @@ import CircularProgress from "./CircularProgress";
 export default function (ComposedClass, reload, adminRoute = null) {
   class AuthenticationCheck extends Component {
     state = {
-      loading: false,
+      loading: true,
     };
 
     componentDidMount() {
+      console.log("componentDidMount");
       this.props.dispatch(auth()).then((response) => {
         let user = this.props.user.userData;
-        console.log(user);
+
+        console.log("in auth.js userData", user);
         if (!user.isAuth) {
           if (reload) {
             this.props.history.push("/login");
@@ -31,6 +34,8 @@ export default function (ComposedClass, reload, adminRoute = null) {
     }
 
     render() {
+      console.log("auth render function");
+
       if (this.state.loading) {
         return (
           <>
@@ -47,6 +52,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
   }
 
   function mapStateToProps(state) {
+    console.log("mapStateToProps", state.user);
     return {
       user: state.user,
     };
