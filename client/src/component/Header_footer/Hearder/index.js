@@ -114,7 +114,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
           <div class="container-fluid">
             <button
               class="navbar-toggler"

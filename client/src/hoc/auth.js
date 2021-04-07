@@ -11,11 +11,10 @@ export default function (ComposedClass, reload, adminRoute = null) {
     };
 
     componentDidMount() {
-      console.log("componentDidMount");
+      console.log("componentDidMount in auth");
       this.props.dispatch(auth()).then((response) => {
         let user = this.props.user.userData;
 
-        console.log("in auth.js userData", user);
         if (!user.isAuth) {
           if (reload) {
             this.props.history.push("/login");
@@ -31,6 +30,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
         }
         this.setState({ loading: false });
       });
+      console.log("dispatched in auth");
     }
 
     render() {

@@ -1,10 +1,5 @@
 import UserLayout from "../../hoc/user";
 import { Link, withRouter } from "react-router-dom";
-import CircularProgress from "../../hoc/CircularProgress";
-
-import { connect } from "react-redux";
-
-import React, { Component } from "react";
 
 const UserDashboard = ({ user }) => {
   return (

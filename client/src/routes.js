@@ -6,6 +6,7 @@ import Register from "./component/Register_login/register";
 import Login from "./component/Register_login/login";
 import DialogSuccess from "./component/Register_login/dialogSuccess";
 import UserDashboard from "./component/User/index";
+import Shop from "./component/Shop";
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
           component={Auth(UserDashboard, true)}
         />
         <Route path="/register" exact component={Auth(Register, false)} />
+        <Route path="/shop" exact component={Auth(Shop, null)} />
         <Route path="/test" exact component={DialogSuccess} />
       </Switch>
     </Layout>
